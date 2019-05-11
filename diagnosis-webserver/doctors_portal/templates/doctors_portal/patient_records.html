@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Patient List</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Patient Name - {{header}}</h3>
+        <ul>
+            <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm"> <b>Recorded Time</b> </div>
+                        <div class="col-sm"> <b>Beats Per Minute</b> </div>
+                        <div class="col-sm"> <b>Cardiac Output</b> </div>
+                        <div class="col-sm"> <b>Stroke Volume</b> </div>
+                        <div class="col-sm"> <b>Time Delta</b> </div>
+                        <div class="col-sm"> <b>Stifness Index</b> </div>
+                        <div class="col-sm"> <b>Augmented Index</b ></div>
+                        <div class="col-sm"> <b>Pulse Wave Velocity</b> </div>
+                        <div class="col-sm"> <b>Graph</b> </div>
+                    </div>
+            </li>
+
+            {% for record in object_list %}
+            
+            <a href="#">
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm"> {{record.created_at }} </div>
+                        <div class="col-sm"> {{record.bpm}} </div>
+                        <div class="col-sm"> {{record.cardiac_output}} </div>
+                        <div class="col-sm"> {{record.stroke_volume}} </div>
+                        <div class="col-sm"> {{record.estimated_delta}} </div>
+                        <div class="col-sm"> {{record.stiffness_index}} </div>
+                        <div class="col-sm"> {{record.augmented_index}} </div>
+                        <div class="col-sm"> {{record.pulse_wave_velocity}} </div>
+                        <div class="col-sm"><img src="{{record.plot}}"></img>" </div>
+                    </div>
+                </li>
+
+            </a>
+            
+            {% empty %}
+            <li>No Patient Records</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
